@@ -3,14 +3,17 @@
     <head>
         <producer>jp.co.tis.stc.photoquiz</producer>
         <!-- TODO このシナリオの説明文を入力してください(プログラムに影響はありません) -->
-        <description>テンプレートのホーム起動シナリオ</description>
+        <description>PhotoQuizアプリのホーム起動シナリオ</description>
         <scene value="home" />
         <version value="1.0" />
-        <situation priority="78" topic_id="start" trigger="user-word">${Local:WORD_APPLICATION} eq
-            てんぷれーと
+        <situation priority="78" topic_id="start" trigger="user-word">
+            ${Local:WORD_APPLICATION} eq ふぉとくいず
         </situation>
         <situation priority="78" topic_id="start" trigger="user-word">
-            ${Local:WORD_APPLICATION_FREEWORD} eq てんぷれーとあぷりしよう
+            ${Local:WORD_APPLICATION_FREEWORD} eq ふぉとくいずあぷりしよう
+        </situation>
+        <situation priority="78" topic_id="start" trigger="user-word">
+            ${Local:WORD_APPLICATION_FREEWORD} eq ふぉとくいずしよう
         </situation>
     </head>
     <body>
@@ -20,7 +23,7 @@
                 <behavior id="${resolver:motion_ok(${resolver:ok_id})}" type="normal" />
             </action>
             <action index="2">
-                <speech>テンプレートを起動するね</speech>
+                <speech>ふぉとくいずをするね</speech>
                 <behavior id="assign" type="normal" />
                 <control function="start_activity" target="home">
                     <data key="package_name" value="jp.co.tis.stc.photoquiz" />
