@@ -80,17 +80,17 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
         //TODO プロジェクタイベントの検知登録(プロジェクター利用時のみ).
         //setProjectorEventReceiver();
 
-        //発話ボタンの実装.
-        Button Button = (Button) findViewById(R.id.accost);
-        Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mVoiceUIManager != null) {
-                    VoiceUIVariableListHelper helper = new VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_HELLO);
-                    VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
-                }
-            }
-        });
+//        //発話ボタンの実装.
+//        Button Button = (Button) findViewById(R.id.accost);
+//        Button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mVoiceUIManager != null) {
+//                    VoiceUIVariableListHelper helper = new VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_HELLO);
+//                    VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
+//                }
+//            }
+//        });
 
     }
 
@@ -113,6 +113,10 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
         //Scene有効化.
         VoiceUIManagerUtil.enableScene(mVoiceUIManager, ScenarioDefinitions.SCENE_COMMON);
         VoiceUIManagerUtil.enableScene(mVoiceUIManager, ScenarioDefinitions.SCENE01);
+
+        //TODO: 動的に
+        ImageSearchTask imageSearchTask = new ImageSearchTask(this);
+        imageSearchTask.execute("もみじ");
     }
 
     @Override
