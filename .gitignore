@@ -46,3 +46,4 @@ captures/
 captures
 .externalNativeBuild
 app/jar/
+gradle.properties
