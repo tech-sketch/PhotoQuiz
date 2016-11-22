@@ -1,5 +1,18 @@
 <resources>
     <string name="app_name">PhotoQuiz</string>
     <string name="hello">Hello RoBoHoN!!</string>
-    <string name="accost">発話</string>
+
+    <string-array name="words">
+        <item>桜</item>
+        <item>もみじ</item>
+        <item>チューリップ</item>
+        <item>ヒガンバナ</item>
+        <item>ひまわり</item>
+        <item>スイセン</item>
+        <item>アサガオ</item>
+        <item>ひまわり</item>
+        <item>ホオズキ</item>
+        <item>クローバー</item>
+        <item>パンジー</item>
+    </string-array>
 </resources>

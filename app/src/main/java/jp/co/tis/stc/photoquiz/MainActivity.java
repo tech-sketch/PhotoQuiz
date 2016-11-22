@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.Toolbar;
 
 import java.util.List;
+import java.util.Random;
 
 import jp.co.tis.stc.photoquiz.customize.ScenarioDefinitions;
 import jp.co.tis.stc.photoquiz.util.VoiceUIManagerUtil;
@@ -57,6 +58,10 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
      * プロジェクタ照射状態.
      */
     private boolean isProjected = false;
+    /**
+     * RandomQuestion
+     */
+    private final Random random = new Random(System.currentTimeMillis());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,9 +119,15 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
         VoiceUIManagerUtil.enableScene(mVoiceUIManager, ScenarioDefinitions.SCENE_COMMON);
         VoiceUIManagerUtil.enableScene(mVoiceUIManager, ScenarioDefinitions.SCENE01);
 
+
+        // 問題にする単語を選択。
         //TODO: 動的に
+        String[] questions = getResources().getStringArray(R.array.words);
+        String  question = questions[random.nextInt(questions.length)];
+
         ImageSearchTask imageSearchTask = new ImageSearchTask(this);
-        imageSearchTask.execute("もみじ");
+
+        imageSearchTask.execute(question);
     }
 
     @Override
