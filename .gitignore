@@ -38,3 +38,11 @@ captures/
 
 # Keystore files
 *.jks
+
+# add ignore files
+.idea/
+.idea/libraries
+.DS_Store
+captures
+.externalNativeBuild
+app/jar/
