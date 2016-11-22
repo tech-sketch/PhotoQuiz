@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<hvml version="2.0">
+    <head>
+        <producer>jp.co.tis.stc.photoquiz</producer>
+        <description>アプリを終了するためのシナリオ</description>
+        <scene value="jp.co.tis.stc.photoquiz.scene_common" />
+        <version value="1.0" />
+        <situation priority="61" topic_id="accept" trigger="user-word">アプリ in ${Lvcsr:Basic} and
+            ${Lvcsr:Basic} include [終了,終わ]
+        </situation>
+        <accost priority="74" topic_id="execute" word="jp.co.tis.stc.photoquiz.app_end.execute" />
+    </head>
+    <body>
+        <topic id="accept" listen="false">
+            <action index="1">
+                <speech>${resolver:speech_ok(${resolver:ok_id})}</speech>
+                <behavior id="${resolver:motion_ok(${resolver:ok_id})}" type="normal" />
+            </action>
+            <next href="#execute" type="default" />
+        </topic>
+        <topic id="execute" listen="false">
+            <action index="1">
+                <speech>アプリを終了するね</speech>
+                <behavior id="assign" type="normal" />
+                <control function="end_app" target="jp.co.tis.stc.photoquiz" />
+            </action>
+        </topic>
+    </body>
+</hvml>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PhotoQuiz</string>
+    <string name="hello">Hello RoBoHoN!!</string>
+    <string name="accost">発話</string>
+</resources>
