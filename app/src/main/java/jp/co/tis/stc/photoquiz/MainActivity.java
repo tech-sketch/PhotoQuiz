@@ -83,7 +83,7 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
         registerReceiver(mVoiceUIStartReceiver, filter);
 
         //TODO プロジェクタイベントの検知登録(プロジェクター利用時のみ).
-        //setProjectorEventReceiver();
+        setProjectorEventReceiver();
 
 //        //発話ボタンの実装.
 //        Button Button = (Button) findViewById(R.id.accost);
@@ -158,7 +158,7 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
         this.unregisterReceiver(mVoiceUIStartReceiver);
 
         //TODO プロジェクタイベントの検知破棄(プロジェクター利用時のみ).
-        //this.unregisterReceiver(mProjectorEventReceiver);
+        this.unregisterReceiver(mProjectorEventReceiver);
 
         //インスタンスのごみ掃除.
         mVoiceUIManager = null;
@@ -178,9 +178,9 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
                 break;
             case ScenarioDefinitions.FUNC_START_PROJECTOR:
                 //TODO プロジェクタマネージャの開始(プロジェクター利用時のみ).
-                //if(!isProjected) {
-                //    startService(getIntentForProjector());
-                //}
+                if(!isProjected) {
+                    startService(getIntentForProjector());
+                }
                 break;
             default:
                 break;
