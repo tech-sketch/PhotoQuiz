@@ -119,6 +119,10 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
         VoiceUIManagerUtil.enableScene(mVoiceUIManager, ScenarioDefinitions.SCENE_COMMON);
         VoiceUIManagerUtil.enableScene(mVoiceUIManager, ScenarioDefinitions.SCENE01);
 
+        if (mVoiceUIManager != null) {
+            VoiceUIVariableListHelper helper = new VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_HELLO);
+            VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
+        }
 
         // 問題にする単語を選択。
         //TODO: 動的に
