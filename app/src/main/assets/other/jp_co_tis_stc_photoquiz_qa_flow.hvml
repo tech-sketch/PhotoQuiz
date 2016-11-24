@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
 <hvml version="2.0">
     <head>
-        <producer>com.example.administrator.sample_test</producer>
+        <producer>jp.co.tis.stc.photoquiz</producer>
         <description>クイズの出題と回答の一連の流れ</description>
-        <scene value="com.example.administrator.sample_test.scene01" />
+        <scene value="jp.co.tis.stc.photoquiz.scene01" />
         <version value="1.0" />
         <situation priority="75" topic_id="start" trigger="user-word">テスト near
             ${Lvcsr:Basic}
