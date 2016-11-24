@@ -3,6 +3,7 @@ package jp.co.tis.stc.photoquiz;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.webkit.WebView;
 
@@ -119,7 +120,13 @@ public class ImageSearchTask extends AsyncTask<String, Integer, String> {
         super.onPostExecute(url);
         dialog.dismiss();
 
+        DisplayMetrics metrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
         WebView webView = (WebView) activity.findViewById(R.id.webview);
+        webView.getSettings().setLoadWithOverviewMode( false );
+        webView.getSettings().setUseWideViewPort( false );
+        webView.setInitialScale((int)(metrics.density * 100));
         webView.loadUrl(url);
 
     }
