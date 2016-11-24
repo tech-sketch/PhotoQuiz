@@ -15,6 +15,9 @@
         <situation priority="78" topic_id="start" trigger="user-word">
             ${Local:WORD_APPLICATION_FREEWORD} eq ふぉとくいずしよう
         </situation>
+        <situation priority="78" topic_id="start" trigger="user-word">
+            ${Local:WORD_APPLICATION_FREEWORD} eq くいずしよう
+        </situation>
     </head>
     <body>
         <topic id="start" listen="false">
@@ -23,7 +26,7 @@
                 <behavior id="${resolver:motion_ok(${resolver:ok_id})}" type="normal" />
             </action>
             <action index="2">
-                <speech>ふぉとくいずをするね</speech>
+                <speech>はーい、クイズだね。じゃあいくよ。</speech>
                 <behavior id="assign" type="normal" />
                 <control function="start_activity" target="home">
                     <data key="package_name" value="jp.co.tis.stc.photoquiz" />
