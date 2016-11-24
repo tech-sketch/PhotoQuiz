@@ -12,16 +12,17 @@
         <accost priority="75" topic_id="say" word="jp.co.tis.stc.photoquiz.hello.say" />
     </head>
     <body>
-        <topic id="say" listen="false">
+        <topic id="say">
             <action index="1">
-                <speech>こんにちは！僕、ロボホン。おはようとか、こんにちはとか話しかけてみてね</speech>
+                <speech>はーい！プロジェクターを起動するね。</speech>
                 <behavior id="assign" type="normal" />
             </action>
+            <next href="#projector" type="default" />
         </topic>
-        <topic id="reply" listen="false">
+        <topic id="projector" listen="false">
             <action index="1">
-                <speech>お話してくれて、ありがとう！これから、僕にいろんなことを教えてね！！</speech>
-                <behavior id="assign" type="normal" />
+                <control function="start_projector" target="jp.co.tis.stc.photoquiz">
+                </control>
             </action>
         </topic>
     </body>
