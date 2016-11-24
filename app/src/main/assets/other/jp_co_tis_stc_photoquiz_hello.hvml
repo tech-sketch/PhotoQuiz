@@ -14,7 +14,7 @@
     <body>
         <topic id="say">
             <action index="1">
-                <speech>はーい！プロジェクターを起動するね。</speech>
+                <speech>プロジェクターを起動するね。</speech>
                 <behavior id="assign" type="normal" />
             </action>
             <next href="#projector" type="default" />
