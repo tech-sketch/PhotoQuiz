@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<hvml version="2.0">
+    <head>
+        <producer>com.example.administrator.sample_test</producer>
+        <description>クイズの出題と回答の一連の流れ</description>
+        <scene value="com.example.administrator.sample_test.scene01" />
+        <version value="1.0" />
+        <situation priority="75" topic_id="start" trigger="user-word">テスト near
+            ${Lvcsr:Basic}
+        </situation>
+    </head>
+
+    <body>
+        <topic id="start" listen="false">
+            <action index="1">
+                <memory key="count" type="temporary" value="0" />
+                <speech>テストだよ</speech>
+            </action>
+            <next href="#start_qa" type="default" />
+        </topic>
+
+        <topic id="start_qa" listen="false">
+            <rule>
+                <condition case_id="1">${memory_t:count} lt 3</condition>
+            </rule>
+            <case id="1">
+                <action index="1">
+                    <memory key="count" type="temporary" value="(${memory_t:count} + 1)" />
+                    <speech>問題出題数は${memory_t:count}だよ</speech>
+                    <behavior id="assign" type="normal" />
+                </action>
+                <next href="#start_qa" type="default" />
+            </case>
+        </topic>
+    </body>
+</hvml>
