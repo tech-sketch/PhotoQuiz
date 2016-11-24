@@ -113,12 +113,14 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
 
         // 問題にする単語を選択。
         //TODO: 動的に
-        String[] questions = getResources().getStringArray(R.array.words);
-        String  question = questions[random.nextInt(questions.length)];
+        if (isProjected) {
+            String[] questions = getResources().getStringArray(R.array.words);
+            String question = questions[random.nextInt(questions.length)];
 
-        ImageSearchTask imageSearchTask = new ImageSearchTask(this);
+            ImageSearchTask imageSearchTask = new ImageSearchTask(this);
 
-        imageSearchTask.execute(question);
+            imageSearchTask.execute(question);
+        }
     }
 
     @Override
