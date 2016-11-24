@@ -82,20 +82,7 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
         IntentFilter filter = new IntentFilter(VoiceUIManager.ACTION_VOICEUI_SERVICE_STARTED);
         registerReceiver(mVoiceUIStartReceiver, filter);
 
-        //TODO プロジェクタイベントの検知登録(プロジェクター利用時のみ).
         setProjectorEventReceiver();
-
-//        //発話ボタンの実装.
-//        Button Button = (Button) findViewById(R.id.accost);
-//        Button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (mVoiceUIManager != null) {
-//                    VoiceUIVariableListHelper helper = new VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_HELLO);
-//                    VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
-//                }
-//            }
-//        });
 
     }
 
@@ -161,7 +148,6 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
         //VoiceUI再起動の検知破棄.
         this.unregisterReceiver(mVoiceUIStartReceiver);
 
-        //TODO プロジェクタイベントの検知破棄(プロジェクター利用時のみ).
         this.unregisterReceiver(mProjectorEventReceiver);
 
         //インスタンスのごみ掃除.
@@ -181,7 +167,6 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
                 finish();
                 break;
             case ScenarioDefinitions.FUNC_START_PROJECTOR:
-                //TODO プロジェクタマネージャの開始(プロジェクター利用時のみ).
                 if(!isProjected) {
                     startService(getIntentForProjector());
                 }
