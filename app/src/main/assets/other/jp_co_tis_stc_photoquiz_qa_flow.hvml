@@ -8,6 +8,7 @@
         <situation priority="75" topic_id="init" trigger="user-word">テスト near
             ${Lvcsr:Basic}
         </situation>
+        <accost priority="75" topic_id="init" word="jp.co.tis.stc.photoquiz.qa_flow.init" />
     </head>
 
     <body>
@@ -66,7 +67,8 @@
 
         <topic id="incorrect" listen="false">
             <action index="1">
-                <speech>${memory_p:jp.co.tis.stc.photoquiz.incorrect}は間違いだよ</speech>
+                <!--<speech>${memory_p:jp.co.tis.stc.photoquiz.incorrect}は間違いだよ</speech>-->
+                <speech>${Lvcsr:Basic}は間違いだよ</speech>
                 <behavior id="assign" type="normal" />
             </action>
             <action index="2">
@@ -114,6 +116,7 @@
                 <action index="3">
                     <speech>お疲れ様</speech>
                     <behavior id="assign" type="normal" />
+                    <control function="end_app" target="jp.co.tis.stc.photoquiz" />
                 </action>
             </case>
         </topic>
