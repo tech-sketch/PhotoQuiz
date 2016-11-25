@@ -18,6 +18,7 @@ import java.util.Random;
 
 import jp.co.tis.stc.photoquiz.customize.ScenarioDefinitions;
 import jp.co.tis.stc.photoquiz.util.VoiceUIManagerUtil;
+import jp.co.tis.stc.photoquiz.util.VoiceUIVariableUtil;
 import jp.co.tis.stc.photoquiz.util.VoiceUIVariableUtil.VoiceUIVariableListHelper;
 import jp.co.sharp.android.rb.projectormanager.ProjectorManagerServiceUtil;
 import jp.co.sharp.android.voiceui.VoiceUIManager;
@@ -126,12 +127,32 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
 
         // 問題にする単語を選択。
         //TODO: 動的に
-        String[] questions = getResources().getStringArray(R.array.words);
-        String  question = questions[random.nextInt(questions.length)];
+        if (isProjected) {
+            String[] questions = getResources().getStringArray(R.array.words);
+            String question = questions[random.nextInt(questions.length)];
 
-        ImageSearchTask imageSearchTask = new ImageSearchTask(this);
+            ImageSearchTask imageSearchTask = new ImageSearchTask(this);
 
-        imageSearchTask.execute(question);
+            imageSearchTask.execute(question);
+
+            //        final String correctWord = questions[random.nextInt(questions.length)];
+            String incorrect_word = questions[random.nextInt(questions.length)];
+
+            while (question.equals(incorrect_word)) {
+                incorrect_word = questions[random.nextInt(questions.length)];
+            }
+
+            int word1 = VoiceUIVariableUtil.setVariableData(mVoiceUIManager, ScenarioDefinitions.MEM_P_CORRECT, question);
+            if (word1 == VoiceUIManager.VOICEUI_ERROR) {
+                Log.d(TAG, "setVariableData:VARIABLE_REGISTER_FAILED");
+            }
+            int word2 = VoiceUIVariableUtil.setVariableData(mVoiceUIManager, ScenarioDefinitions.MEM_P_INCORRECT, incorrect_word);
+            if (word2 == VoiceUIManager.VOICEUI_ERROR) {
+                Log.d(TAG, "setVariableData:VARIABLE_REGISTER_FAILED");
+            }
+        }
+
+
     }
 
     @Override
@@ -182,7 +203,7 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
                 break;
             case ScenarioDefinitions.FUNC_START_PROJECTOR:
                 //TODO プロジェクタマネージャの開始(プロジェクター利用時のみ).
-                if(!isProjected) {
+                if (!isProjected) {
                     startService(getIntentForProjector());
                 }
                 break;

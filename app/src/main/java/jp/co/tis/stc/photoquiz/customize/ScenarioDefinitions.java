@@ -62,6 +62,11 @@ public class ScenarioDefinitions {
      * accost名：アプリ終了発話実行.
      */
     public static final String ACC_END_APP = ScenarioDefinitions.PACKAGE + ".app_end.execute";
+
+    //    クイズの正解と不正解をHVMLに渡す
+    public static final String MEM_P_CORRECT = ScenarioDefinitions.TAG_MEMORY_PERMANENT + ScenarioDefinitions.PACKAGE + ".correct";
+    public static final String MEM_P_INCORRECT = ScenarioDefinitions.TAG_MEMORY_PERMANENT + ScenarioDefinitions.PACKAGE + ".incorrect";
+
     /**
      * static クラスとして使用する.
      */
