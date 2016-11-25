@@ -23,8 +23,8 @@
             <action index="1">
                 <control function="start_projector" target="jp.co.tis.stc.photoquiz">
                 </control>
-                <a href="jp_co_tis_stc_photoquiz_qa_flow#start" type="default" />
             </action>
+            <next href="jp_co_tis_stc_photoquiz_qa_flow#init" type="default" />
         </topic>
     </body>
 </hvml>

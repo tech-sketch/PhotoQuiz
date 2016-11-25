@@ -5,16 +5,29 @@
         <description>クイズの出題と回答の一連の流れ</description>
         <scene value="jp.co.tis.stc.photoquiz.scene01" />
         <version value="1.0" />
-        <situation priority="75" topic_id="start" trigger="user-word">テスト near
+        <situation priority="75" topic_id="init" trigger="user-word">テスト near
             ${Lvcsr:Basic}
         </situation>
     </head>
 
     <body>
-        <topic id="start" listen="false">
+        <topic id="init" listen="false">
             <action index="1">
                 <memory key="count" type="temporary" value="1" />
-                <speech>テストだよ</speech>
+                <memory key="correct" type="temporary" value="0" />
+            </action>
+            <next href="#start" type="default" />
+        </topic>
+
+        <topic id="start" listen="false">
+            <action index="1">
+                <speech>第${memory_t:count}問目だよ</speech>
+            </action>
+            <action index="2">
+                <speech>これは何かわかる？</speech>
+            </action>
+            <action index="3">
+                <speech>10秒以内に答えてね</speech>
             </action>
             <next href="#start_qa" type="default" />
         </topic>
@@ -23,6 +36,7 @@
             <a href="#correct">
                 <situation trigger="user-word">${Lvcsr:Basic} eq
                     ${memory_p:jp.co.tis.stc.photoquiz.correct}
+                    <!--もみじ-->
                 </situation>
             </a>
             <a href="#incorrect">
@@ -30,20 +44,25 @@
                     ${memory_p:jp.co.tis.stc.photoquiz.correct}
                 </situation>
             </a>
+            <next href="#timeover" type="default" />
         </topic>
 
-        <topic id="correct" listen="true">
+        <topic id="correct" listen="false">
             <action index="1">
-                <memory key="count" type="temporary" value="(${memory_t:count} + 1)" />
-                <speech>答えは${memory_p:jp.co.tis.stc.photoquiz.correct}だよ</speech>
+                <memory key="correct" type="temporary" value="(${memory_t:correct} + 1)" />
+                <speech>正解だよ。これは${memory_p:jp.co.tis.stc.photoquiz.correct}だね。
+                </speech>
                 <behavior id="assign" type="normal" />
             </action>
-            <next href="#start_qa" type="default" />
+            <action index="2">
+                <speech>すごいね！</speech>
+                <behavior id="assign" type="normal" />
+            </action>
+            <next href="#continue" type="default" />
         </topic>
 
-        <topic id="incorrect" listen="true">
+        <topic id="incorrect" listen="false">
             <action index="1">
-                <memory key="count" type="temporary" value="(${memory_t:count} + 1)" />
                 <speech>${memory_p:jp.co.tis.stc.photoquiz.incorrect}は間違いだよ</speech>
                 <behavior id="assign" type="normal" />
             </action>
@@ -51,7 +70,49 @@
                 <speech>正解は${memory_p:jp.co.tis.stc.photoquiz.correct}だよ</speech>
                 <behavior id="assign" type="normal" />
             </action>
-            <next href="#start_qa" type="default" />
+            <next href="#continue" type="default" />
+        </topic>
+
+        <topic id="timeover" listen="false">
+            <action index="1">
+                <speech>ぶっぶー。時間切れだよ。</speech>
+                <behavior id="assign" type="normal" />
+            </action>
+            <action index="2">
+                <speech>正解は${memory_p:jp.co.tis.stc.photoquiz.correct}だよ</speech>
+                <behavior id="assign" type="normal" />
+            </action>
+            <next href="#continue" type="default" />
+        </topic>
+
+        <topic id="continue" listen="false">
+            <rule>
+                <condition case_id="1">${memory_t:count} lt 3</condition>
+                <condition case_id="2">${memory_t:count} ge 3</condition>
+            </rule>
+            <case id="1">
+                <action index="1">
+                    <memory key="count" type="temporary" value="(${memory_t:count} + 1)" />
+                    <speech>次の問題に行くね</speech>
+                    <behavior id="assign" type="normal" />
+                </action>
+                <next href="#start" type="default" />
+            </case>
+
+            <case id="2">
+                <action index="1">
+                    <speech>終了だよ</speech>
+                    <behavior id="assign" type="normal" />
+                </action>
+                <action index="2">
+                    <speech>君の正解数は${memory_t:correct}だよ</speech>
+                    <behavior id="assign" type="normal" />
+                </action>
+                <action index="3">
+                    <speech>お疲れ様</speech>
+                    <behavior id="assign" type="normal" />
+                </action>
+            </case>
         </topic>
     </body>
 </hvml>
