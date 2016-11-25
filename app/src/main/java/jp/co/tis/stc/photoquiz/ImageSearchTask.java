@@ -57,6 +57,7 @@ public class ImageSearchTask extends AsyncTask<String, Integer, String> {
                     .append("cx=000210841253776044894:4z94vsgvmz0") // カスタム検索
                     .append("&")
                     .append("q=")
+                    .append("植物+")
                     .append(param)
                     .toString();
             URL url = new URL(urlString);
