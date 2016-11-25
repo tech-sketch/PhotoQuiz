@@ -67,6 +67,9 @@ public class ScenarioDefinitions {
     public static final String MEM_P_CORRECT = ScenarioDefinitions.TAG_MEMORY_PERMANENT + ScenarioDefinitions.PACKAGE + ".correct";
     public static final String MEM_P_INCORRECT = ScenarioDefinitions.TAG_MEMORY_PERMANENT + ScenarioDefinitions.PACKAGE + ".incorrect";
 
+    //画像検索を開始させる関数を実行
+    public static final String FUNC_START_SEARCH_IMAGE = "start_search_image";
+
     /**
      * static クラスとして使用する.
      */

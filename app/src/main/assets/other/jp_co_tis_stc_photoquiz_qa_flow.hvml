@@ -24,9 +24,12 @@
                 <speech>第${memory_t:count}問目だよ</speech>
             </action>
             <action index="2">
-                <speech>これは何かわかる？</speech>
+                <control function="start_search_image" target="jp.co.tis.stc.photoquiz" />
             </action>
             <action index="3">
+                <speech>これは何かわかる？</speech>
+            </action>
+            <action index="4">
                 <speech>10秒以内に答えてね</speech>
             </action>
             <next href="#start_qa" type="default" />
