@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PowerManager;
 import android.util.Log;
 import android.view.View;
@@ -64,6 +65,7 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
      */
     private final Random random = new Random(System.currentTimeMillis());
 
+    private final Handler mHandler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,34 +127,6 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
             VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
         }
 
-        // 問題にする単語を選択。
-        //TODO: 動的に
-        if (isProjected) {
-            String[] questions = getResources().getStringArray(R.array.words);
-            String question = questions[random.nextInt(questions.length)];
-
-            ImageSearchTask imageSearchTask = new ImageSearchTask(this);
-
-            imageSearchTask.execute(question);
-
-            //        final String correctWord = questions[random.nextInt(questions.length)];
-            String incorrect_word = questions[random.nextInt(questions.length)];
-
-            while (question.equals(incorrect_word)) {
-                incorrect_word = questions[random.nextInt(questions.length)];
-            }
-
-            int word1 = VoiceUIVariableUtil.setVariableData(mVoiceUIManager, ScenarioDefinitions.MEM_P_CORRECT, question);
-            if (word1 == VoiceUIManager.VOICEUI_ERROR) {
-                Log.d(TAG, "setVariableData:VARIABLE_REGISTER_FAILED");
-            }
-            int word2 = VoiceUIVariableUtil.setVariableData(mVoiceUIManager, ScenarioDefinitions.MEM_P_INCORRECT, incorrect_word);
-            if (word2 == VoiceUIManager.VOICEUI_ERROR) {
-                Log.d(TAG, "setVariableData:VARIABLE_REGISTER_FAILED");
-            }
-        }
-
-
     }
 
     @Override
@@ -199,8 +173,34 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
         Log.v(TAG, "onExecCommand() : " + command);
         switch (command) {
             case ScenarioDefinitions.FUNC_END_APP:
-                finish();
-                break;
+                final Activity act = this;
+                mHandler.post(new Runnable(){
+                    @Override
+                    public void run() {
+                        String[] questions = getResources().getStringArray(R.array.words);
+                        String question = questions[random.nextInt(questions.length)];
+
+                        ImageSearchTask imageSearchTask = new ImageSearchTask(act);
+                        imageSearchTask.execute(question);
+
+                        //        final String correctWord = questions[random.nextInt(questions.length)];
+                        String incorrect_word = questions[random.nextInt(questions.length)];
+
+                        while (question.equals(incorrect_word)) {
+                            incorrect_word = questions[random.nextInt(questions.length)];
+                        }
+
+                        int word1 = VoiceUIVariableUtil.setVariableData(mVoiceUIManager, ScenarioDefinitions.MEM_P_CORRECT, question);
+                        if (word1 == VoiceUIManager.VOICEUI_ERROR) {
+                            Log.d(TAG, "setVariableData:VARIABLE_REGISTER_FAILED");
+                        }
+                        int word2 = VoiceUIVariableUtil.setVariableData(mVoiceUIManager, ScenarioDefinitions.MEM_P_INCORRECT, incorrect_word);
+                        if (word2 == VoiceUIManager.VOICEUI_ERROR) {
+                            Log.d(TAG, "setVariableData:VARIABLE_REGISTER_FAILED");
+                        }
+                    }
+                });
+            break;
             case ScenarioDefinitions.FUNC_START_PROJECTOR:
                 //TODO プロジェクタマネージャの開始(プロジェクター利用時のみ).
                 if (!isProjected) {
