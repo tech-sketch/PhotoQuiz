@@ -13,24 +13,45 @@
     <body>
         <topic id="start" listen="false">
             <action index="1">
-                <memory key="count" type="temporary" value="0" />
+                <memory key="count" type="temporary" value="1" />
                 <speech>テストだよ</speech>
             </action>
             <next href="#start_qa" type="default" />
         </topic>
 
-        <topic id="start_qa" listen="false">
-            <rule>
-                <condition case_id="1">${memory_t:count} lt 3</condition>
-            </rule>
-            <case id="1">
-                <action index="1">
-                    <memory key="count" type="temporary" value="(${memory_t:count} + 1)" />
-                    <speech>問題出題数は${memory_t:count}だよ</speech>
-                    <behavior id="assign" type="normal" />
-                </action>
-                <next href="#start_qa" type="default" />
-            </case>
+        <topic id="start_qa" listen="true">
+            <a href="#correct">
+                <situation trigger="user-word">${Lvcsr:Basic} eq
+                    ${memory_p:jp.co.tis.stc.photoquiz.correct}
+                </situation>
+            </a>
+            <a href="#incorrect">
+                <situation trigger="user-word">${Lvcsr:Basic} neq
+                    ${memory_p:jp.co.tis.stc.photoquiz.correct}
+                </situation>
+            </a>
+        </topic>
+
+        <topic id="correct" listen="true">
+            <action index="1">
+                <memory key="count" type="temporary" value="(${memory_t:count} + 1)" />
+                <speech>答えは${memory_p:jp.co.tis.stc.photoquiz.correct}だよ</speech>
+                <behavior id="assign" type="normal" />
+            </action>
+            <next href="#start_qa" type="default" />
+        </topic>
+
+        <topic id="incorrect" listen="true">
+            <action index="1">
+                <memory key="count" type="temporary" value="(${memory_t:count} + 1)" />
+                <speech>${memory_p:jp.co.tis.stc.photoquiz.incorrect}は間違いだよ</speech>
+                <behavior id="assign" type="normal" />
+            </action>
+            <action index="2">
+                <speech>正解は${memory_p:jp.co.tis.stc.photoquiz.correct}だよ</speech>
+                <behavior id="assign" type="normal" />
+            </action>
+            <next href="#start_qa" type="default" />
         </topic>
     </body>
 </hvml>
