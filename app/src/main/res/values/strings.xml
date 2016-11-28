@@ -3,22 +3,20 @@
     <string name="hello">Hello RoBoHoN!!</string>
 
     <string-array name="words">
-        <item>桜</item>
-        <item>もみじ</item>
+        <item>サクラ</item>
         <item>チューリップ</item>
         <item>ヒガンバナ</item>
         <item>アネモネ</item>
         <item>スイセン</item>
         <item>アサガオ</item>
-        <item>ひまわり</item>
+        <item>ヒマワリ</item>
         <item>ホオズキ</item>
         <item>クローバー</item>
         <item>パンジー</item>
         <item>シバザクラ</item>
-        <item>梅の花</item>
+        <item>ウメ</item>
         <item>タンポポ</item>
         <item>スミレ</item>
-        <item>ヒアシンス</item>
         <item>ツバキ</item>
         <item>カエデ</item>
         <item>アヤメ</item>
@@ -31,7 +29,63 @@
         <item>キキョウ</item>
         <item>コスモス</item>
         <item>キンモクセイ</item>
-        <item>キク</item>
         <item>マリーゴールド</item>
+    </string-array>
+    <string-array name="images">
+        <!-- license... -->
+        <!--<item>桜</item>-->
+        <item>http://fotopus.com/hana/gallery/sakura/images/img01_l.jpg</item>
+        <!--<item>チューリップ</item>-->
+        <item>http://images04.fotopus.net/photos/library/ma/part005/2300000/2384000/Large/2384979_1.jpg</item>
+        <!--<item>ヒガンバナ</item>-->
+        <item>http://fotopus.com/hana/gallery/higanbana/images/img04_l.jpg</item>
+        <!--<item>アネモネ</item>-->
+        <item>https://upload.wikimedia.org/wikipedia/ja/thumb/2/22/W_anemone4031.jpg/250px-W_anemone4031.jpg</item>
+        <!--<item>スイセン</item>-->
+        <item>http://fotopus.com/hana/gallery/suisen/images/img04_l.jpg</item>
+        <!--<item>アサガオ</item>-->
+        <item>http://fotopus.com/hana/gallery/asagao/images/img04_l.jpg</item>
+        <!--<item>ひまわり</item>-->
+        <item>http://fotopus.com/hana/gallery/himawari/images/img04_l.jpg</item>
+        <!--<item>ホオズキ</item>-->
+        <item>http://images02.fotopus.net/photos/library/ma/part006/2700000/2703000/Large/2703979.jpg</item>
+        <!--<item>クローバー</item>-->
+        <item>http://www.kenrockwell.com/ca/images/clover.jpg</item>
+        <!--<item>パンジー</item>-->
+        <item>http://fotopus.com/hana/gallery/pansy/images/img03_l.jpg</item>
+        <!--<item>シバザクラ</item>-->
+        <item>http://fotopus.com/hana/gallery/shibazakura/images/img03_l.jpg</item>
+        <!--<item>梅の花</item>-->
+        <item>http://images06.fotopus.net/photos/library/ma/part005/2300000/2363000/Large/2363393_3.jpg</item>
+        <!--<item>タンポポ</item>-->
+        <item>http://images02.fotopus.net/photos/library/ma/part002/600000/685000/Large/685075.jpg</item>
+        <!--<item>スミレ</item>-->
+        <item>http://images03.fotopus.net/photos/library/ma/part002/800000/897000/Large/897080.jpg</item>
+        <!--<item>ツバキ</item>-->
+        <item>http://fotopus.com/hana/gallery/tsubaki/images/img01_l.jpg</item>
+        <!--<item>カエデ</item>-->
+        <item>http://images06.fotopus.net/photos/library/ma/part003/1000000/1002000/Large/1002965.jpg</item>
+        <!--<item>アヤメ</item>-->
+        <item>http://fotopus.com/hana/gallery/ayame/images/img04_l.jpg</item>
+        <!--<item>サザンカ</item>-->
+        <item>http://fotopus.com/hana/gallery/sazanka/images/img02_l.jpg</item>
+        <!--<item>ジンチョウゲ</item>-->
+        <item>https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Daphne_odora-ja01.jpg/280px-Daphne_odora-ja01.jpg</item>
+        <!--<item>アマリリス</item>-->
+        <item>http://images02.fotopus.net/photos/library/ma/part003/1100000/1115000/Large/1115599_3.jpg</item>
+        <!--<item>シャクヤク</item>-->
+        <item>http://images06.fotopus.net/photos/library/ma/part004/1500000/1573000/Large/1573259.jpg</item>
+        <!--<item>ナデシコ</item>-->
+        <item>http://images01.fotopus.net/photos/library/ma/part004/1300000/1349000/Large/1349328.jpg</item>
+        <!--<item>ガーベラ</item>-->
+        <item>http://fotopus.com/hana/gallery/gerbera/images/img04_l.jpg</item>
+        <!--<item>キキョウ</item>-->
+        <item>http://fotopus.com/hana/gallery/kikyou/images/img01_l.jpg</item>
+        <!--<item>コスモス</item>-->
+        <item>http://images06.fotopus.net/photos/library/ma/part004/1400000/1419000/Large/1419131_2.jpg</item>
+        <!--<item>キンモクセイ</item>-->
+        <item>http://fotopus.com/hana/gallery/kinmokusei/images/img03_l.jpg</item>
+        <!--<item>マリーゴールド</item>-->
+        <item>http://www.yasashi.info/image/photo/0000-0540l.jpg</item>
     </string-array>
 </resources>

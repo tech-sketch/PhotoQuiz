@@ -10,8 +10,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toolbar;
 
 import java.util.List;
@@ -177,10 +175,13 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
                     @Override
                     public void run() {
                         String[] questions = getResources().getStringArray(R.array.words);
-                        String question = questions[random.nextInt(questions.length)];
+                        String[] images = getResources().getStringArray(R.array.images);
+                        int index = random.nextInt(questions.length);
+                        String question = questions[index];
+                        String imageUrl = images[index];
 
                         ImageSearchTask imageSearchTask = new ImageSearchTask(act);
-                        imageSearchTask.execute(question);
+                        imageSearchTask.execute(imageUrl);
 
                         //        final String correctWord = questions[random.nextInt(questions.length)];
                         String incorrect_word = questions[random.nextInt(questions.length)];
