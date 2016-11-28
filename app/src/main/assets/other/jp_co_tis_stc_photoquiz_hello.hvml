@@ -2,13 +2,9 @@
 <hvml version="2.0">
     <head>
         <producer>jp.co.tis.stc.photoquiz</producer>
-        <!-- TODO このシナリオの説明文を入力してください(プログラムに影響はありません) -->
-        <description>テンプレートシナリオ</description>
+        <description>プロジェクタの起動シナリオ</description>
         <scene value="jp.co.tis.stc.photoquiz.scene01" />
-        <version value="1.0" />
-        <situation priority="75" topic_id="reply" trigger="user-word">${Lvcsr:Basic} include
-            [おはよう,こんにちは,こんばんは]
-        </situation>
+        <version value="1.1" />
         <accost priority="75" topic_id="say" word="jp.co.tis.stc.photoquiz.hello.say" />
     </head>
     <body>
