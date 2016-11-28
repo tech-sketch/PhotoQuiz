@@ -94,6 +94,12 @@ public class ImageSearchTask extends AsyncTask<String, Integer, Bitmap> {
         }
         catch(IOException|JSONException e){
             Log.i(TAG, e.getMessage());
+            VoiceUIManagerUtil.enableScene(mVoiceUIManager, ScenarioDefinitions.SCENE_COMMON);
+            if (mVoiceUIManager == null) {
+                mVoiceUIManager = VoiceUIManager.getService(activity.getApplicationContext());
+            }
+            VoiceUIVariableUtil.VoiceUIVariableListHelper helper = new VoiceUIVariableUtil.VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_END_APP_API);
+            VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
         }
 
         return null;
@@ -117,12 +123,6 @@ public class ImageSearchTask extends AsyncTask<String, Integer, Bitmap> {
             return link;
         }catch(JSONException e){
             Log.d(TAG, e.getMessage());
-            VoiceUIManagerUtil.enableScene(mVoiceUIManager, ScenarioDefinitions.SCENE_COMMON);
-            if (mVoiceUIManager == null) {
-                mVoiceUIManager = VoiceUIManager.getService(activity.getApplicationContext());
-            }
-            VoiceUIVariableUtil.VoiceUIVariableListHelper helper = new VoiceUIVariableUtil.VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_END_APP_API);
-            VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
             return "";
         }
     }
