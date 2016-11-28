@@ -159,6 +159,9 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
     public void onExecCommand(String command, List<VoiceUIVariable> variables) {
         Log.v(TAG, "onExecCommand() : " + command);
         switch (command) {
+            case ScenarioDefinitions.FUNC_END_APP:
+                finish();
+                break;
             case ScenarioDefinitions.FUNC_START_PROJECTOR:
                 if (!isProjected) {
                     startService(getIntentForProjector());
