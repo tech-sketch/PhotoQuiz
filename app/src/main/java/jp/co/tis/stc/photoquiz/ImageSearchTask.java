@@ -2,10 +2,13 @@ package jp.co.tis.stc.photoquiz;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.webkit.WebView;
+import android.widget.ImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,6 +16,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -26,7 +30,7 @@ import jp.co.tis.stc.photoquiz.util.VoiceUIVariableUtil;
  * Created By @seiketkm
  */
 
-public class ImageSearchTask extends AsyncTask<String, Integer, String> {
+public class ImageSearchTask extends AsyncTask<String, Integer, Bitmap> {
     private final static String TAG = ImageSearchTask.class.getSimpleName();
     private final Activity activity;
     private VoiceUIManager mVoiceUIManager = null;
@@ -49,7 +53,7 @@ public class ImageSearchTask extends AsyncTask<String, Integer, String> {
     }
 
     @Override
-    protected String doInBackground(String... params) {
+    protected Bitmap doInBackground(String... params) {
         try {
             final String param = params[0];
             // https://www.googleapis.com/customsearch/v1?key=AIzaSyABeoWRLxjGhkwjOJHmvIdr-tIghh7HgRg&cx=000210841253776044894:4z94vsgvmz0&q=%E3%82%82%E3%81%BF%E3%81%98&searchType=image
@@ -85,7 +89,8 @@ public class ImageSearchTask extends AsyncTask<String, Integer, String> {
             conn.disconnect();
 
             Log.i(TAG, imgUrl);
-            return imgUrl;
+            return getBitmapFromUrl(imgUrl);
+
         }
         catch(IOException|JSONException e){
             Log.i(TAG, e.getMessage());
@@ -122,6 +127,21 @@ public class ImageSearchTask extends AsyncTask<String, Integer, String> {
         }
     }
 
+    private Bitmap getBitmapFromUrl(String imgUrl){
+        try {
+            URL url = new URL(imgUrl);
+            HttpURLConnection connection = (HttpURLConnection) url
+                    .openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap bitmap = BitmapFactory.decodeStream(input);
+            return bitmap;
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
@@ -129,18 +149,11 @@ public class ImageSearchTask extends AsyncTask<String, Integer, String> {
     }
 
     @Override
-    protected void onPostExecute(String url) {
-        super.onPostExecute(url);
+    protected void onPostExecute(Bitmap result) {
+        super.onPostExecute(result);
         dialog.dismiss();
 
-        DisplayMetrics metrics = new DisplayMetrics();
-        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
-        WebView webView = (WebView) activity.findViewById(R.id.webview);
-        webView.getSettings().setLoadWithOverviewMode( false );
-        webView.getSettings().setUseWideViewPort( false );
-        webView.setInitialScale((int)(metrics.density * 100));
-        webView.loadUrl(url);
-
+        ImageView imageView = (ImageView)activity.findViewById(R.id.imageview);
+        imageView.setImageBitmap(result);
     }
 }
