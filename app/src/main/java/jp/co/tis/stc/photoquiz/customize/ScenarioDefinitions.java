@@ -62,6 +62,10 @@ public class ScenarioDefinitions {
      * accost名：アプリ終了発話実行.
      */
     public static final String ACC_END_APP = ScenarioDefinitions.PACKAGE + ".app_end.execute";
+    /**
+     * accost名：APIリクエスト上限によるアプリ終了発話実行.
+     */
+    public static final String ACC_END_APP_API = ScenarioDefinitions.PACKAGE + ".app_end.api";
 
     //    クイズの正解と不正解をHVMLに渡す
     public static final String MEM_P_CORRECT = ScenarioDefinitions.TAG_MEMORY_PERMANENT + ScenarioDefinitions.PACKAGE + ".correct";
@@ -69,6 +73,10 @@ public class ScenarioDefinitions {
 
     //画像検索を開始させる関数を実行
     public static final String FUNC_START_SEARCH_IMAGE = "start_search_image";
+
+//    Q&Aのシナリオを開始
+    public static final String ACC_QA_FLOW = ScenarioDefinitions.PACKAGE + ".qa_flow.init";
+    public static final String FUNC_START_QA_FLOW = "start_qa_flow";
 
     /**
      * static クラスとして使用する.

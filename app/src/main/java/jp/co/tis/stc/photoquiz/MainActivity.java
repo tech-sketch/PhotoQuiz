@@ -160,10 +160,14 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
         Log.v(TAG, "onExecCommand() : " + command);
         switch (command) {
             case ScenarioDefinitions.FUNC_START_PROJECTOR:
-                if(!isProjected) {
+                if (!isProjected) {
                     startService(getIntentForProjector());
                 }
                 break;
+//            case ScenarioDefinitions.FUNC_START_QA_FLOW:
+//                VoiceUIVariableListHelper helper = new VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_QA_FLOW);
+//                VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
+//                break;
             case ScenarioDefinitions.FUNC_START_SEARCH_IMAGE:
                 final Activity act = this;
                 mHandler.post(new Runnable() {
@@ -326,6 +330,8 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
                 case ProjectorManagerServiceUtil.ACTION_PROJECTOR_START:
                     acquireWakeLock();
                     isProjected = true;
+                    VoiceUIVariableListHelper helper = new VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_QA_FLOW);
+                    VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
                     break;
                 case ProjectorManagerServiceUtil.ACTION_PROJECTOR_END:
                 case ProjectorManagerServiceUtil.ACTION_PROJECTOR_END_FATAL_ERROR:

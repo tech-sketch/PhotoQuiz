@@ -17,6 +17,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import jp.co.sharp.android.voiceui.VoiceUIManager;
+import jp.co.tis.stc.photoquiz.customize.ScenarioDefinitions;
+import jp.co.tis.stc.photoquiz.util.VoiceUIManagerUtil;
+import jp.co.tis.stc.photoquiz.util.VoiceUIVariableUtil;
+
 /**
  * Created By @seiketkm
  */
@@ -24,6 +29,7 @@ import java.net.URL;
 public class ImageSearchTask extends AsyncTask<String, Integer, String> {
     private final static String TAG = ImageSearchTask.class.getSimpleName();
     private final Activity activity;
+    private VoiceUIManager mVoiceUIManager = null;
     ProgressDialog dialog;
 
     public ImageSearchTask(Activity activity){
@@ -106,6 +112,12 @@ public class ImageSearchTask extends AsyncTask<String, Integer, String> {
             return link;
         }catch(JSONException e){
             Log.d(TAG, e.getMessage());
+            VoiceUIManagerUtil.enableScene(mVoiceUIManager, ScenarioDefinitions.SCENE_COMMON);
+            if (mVoiceUIManager == null) {
+                mVoiceUIManager = VoiceUIManager.getService(activity.getApplicationContext());
+            }
+            VoiceUIVariableUtil.VoiceUIVariableListHelper helper = new VoiceUIVariableUtil.VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_END_APP_API);
+            VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
             return "";
         }
     }
