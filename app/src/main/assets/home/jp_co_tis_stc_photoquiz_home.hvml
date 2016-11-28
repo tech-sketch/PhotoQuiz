@@ -2,7 +2,6 @@
 <hvml version="2.0">
     <head>
         <producer>jp.co.tis.stc.photoquiz</producer>
-        <!-- TODO このシナリオの説明文を入力してください(プログラムに影響はありません) -->
         <description>PhotoQuizアプリのホーム起動シナリオ</description>
         <scene value="home" />
         <version value="1.0" />
