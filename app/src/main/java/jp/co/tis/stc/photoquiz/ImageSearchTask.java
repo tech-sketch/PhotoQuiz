@@ -103,11 +103,6 @@ public class ImageSearchTask extends AsyncTask<String, Integer, String> {
      * @return itemsの一つ目のString
      */
     private String parseFirstImageUrl(JSONObject json){
-        VoiceUIManagerUtil.enableScene(mVoiceUIManager, ScenarioDefinitions.SCENE_COMMON);
-        if (mVoiceUIManager != null) {
-            VoiceUIVariableUtil.VoiceUIVariableListHelper helper = new VoiceUIVariableUtil.VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_END_APP_API);
-            VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
-        }
         try{
             JSONArray items = json.getJSONArray("items");
             if(items.length() == 0)
@@ -118,10 +113,11 @@ public class ImageSearchTask extends AsyncTask<String, Integer, String> {
         }catch(JSONException e){
             Log.d(TAG, e.getMessage());
             VoiceUIManagerUtil.enableScene(mVoiceUIManager, ScenarioDefinitions.SCENE_COMMON);
-            if (mVoiceUIManager != null) {
-                VoiceUIVariableUtil.VoiceUIVariableListHelper helper = new VoiceUIVariableUtil.VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_END_APP_API);
-                VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
+            if (mVoiceUIManager == null) {
+                mVoiceUIManager = VoiceUIManager.getService(activity.getApplicationContext());
             }
+            VoiceUIVariableUtil.VoiceUIVariableListHelper helper = new VoiceUIVariableUtil.VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_END_APP_API);
+            VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
             return "";
         }
     }
