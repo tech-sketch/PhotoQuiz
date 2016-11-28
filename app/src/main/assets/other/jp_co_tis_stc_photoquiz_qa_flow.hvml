@@ -61,7 +61,7 @@
                 <behavior id="assign" type="normal" />
             </action>
             <action index="2">
-                <speech>すごいね！</speech>
+                <speech>すごい、すごーい！</speech>
                 <behavior id="assign" type="normal" />
             </action>
             <next href="#continue" type="default" />
@@ -139,7 +139,7 @@
             </rule>
             <case id="1">
                 <action index="1">
-                    <speech>もっと勉強して頑張ろうね</speech>
+                    <speech>次は頑張ろうね</speech>
                     <behavior id="assign" type="normal" />
                 </action>
                 <next href="#finish" type="default" />
@@ -149,16 +149,12 @@
                     <speech>あともう少しだったね</speech>
                     <behavior id="assign" type="normal" />
                 </action>
-                <action index="2">
-                    <speech>次は頑張ろうね</speech>
-                    <behavior id="assign" type="normal" />
-                </action>
                 <next href="#finish" type="default" />
             </case>
 
             <case id="3">
                 <action index="1">
-                    <speech>全問正解だよ</speech>
+                    <speech>すごーい！全問正解だよ</speech>
                     <behavior id="assign" type="normal" />
                 </action>
                 <next href="#finish" type="default" />
