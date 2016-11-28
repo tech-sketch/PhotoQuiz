@@ -167,10 +167,6 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
                     startService(getIntentForProjector());
                 }
                 break;
-//            case ScenarioDefinitions.FUNC_START_QA_FLOW:
-//                VoiceUIVariableListHelper helper = new VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_QA_FLOW);
-//                VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
-//                break;
             case ScenarioDefinitions.FUNC_START_SEARCH_IMAGE:
                 final Activity act = this;
                 mHandler.post(new Runnable() {
@@ -182,19 +178,8 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
                         ImageSearchTask imageSearchTask = new ImageSearchTask(act);
                         imageSearchTask.execute(question);
 
-                        //        final String correctWord = questions[random.nextInt(questions.length)];
-                        String incorrect_word = questions[random.nextInt(questions.length)];
-
-                        while (question.equals(incorrect_word)) {
-                            incorrect_word = questions[random.nextInt(questions.length)];
-                        }
-
-                        int word1 = VoiceUIVariableUtil.setVariableData(mVoiceUIManager, ScenarioDefinitions.MEM_P_CORRECT, question);
-                        if (word1 == VoiceUIManager.VOICEUI_ERROR) {
-                            Log.d(TAG, "setVariableData:VARIABLE_REGISTER_FAILED");
-                        }
-                        int word2 = VoiceUIVariableUtil.setVariableData(mVoiceUIManager, ScenarioDefinitions.MEM_P_INCORRECT, incorrect_word);
-                        if (word2 == VoiceUIManager.VOICEUI_ERROR) {
+                        int correct_word = VoiceUIVariableUtil.setVariableData(mVoiceUIManager, ScenarioDefinitions.MEM_P_CORRECT, question);
+                        if (correct_word == VoiceUIManager.VOICEUI_ERROR) {
                             Log.d(TAG, "setVariableData:VARIABLE_REGISTER_FAILED");
                         }
                     }
