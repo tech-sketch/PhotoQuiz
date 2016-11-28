@@ -127,12 +127,55 @@
                     <speech>君の正解数は${memory_t:correct}だよ</speech>
                     <behavior id="assign" type="normal" />
                 </action>
-                <action index="3">
-                    <speech>お疲れ様</speech>
-                    <behavior id="assign" type="normal" />
-                    <control function="end_app" target="jp.co.tis.stc.photoquiz" />
-                </action>
+                <next href="#branch_answer" type="default" />
             </case>
+        </topic>
+
+        <topic id="branch_answer" listen="false">
+            <rule>
+                <condition case_id="1">${memory_t:correct} lt 2</condition>
+                <condition case_id="2">${memory_t:correct} eq 2</condition>
+                <condition case_id="3">${memory_t:correct} ge 3</condition>
+            </rule>
+            <case id="1">
+                <action index="1">
+                    <speech>もっと勉強して頑張ろうね</speech>
+                    <behavior id="assign" type="normal" />
+                </action>
+                <next href="#finish" type="default" />
+            </case>
+            <case id="2">
+                <action index="1">
+                    <speech>あともう少しだったね</speech>
+                    <behavior id="assign" type="normal" />
+                </action>
+                <action index="2">
+                    <speech>次は頑張ろうね</speech>
+                    <behavior id="assign" type="normal" />
+                </action>
+                <next href="#finish" type="default" />
+            </case>
+
+            <case id="3">
+                <action index="1">
+                    <speech>全問正解だよ</speech>
+                    <behavior id="assign" type="normal" />
+                </action>
+                <next href="#finish" type="default" />
+            </case>
+        </topic>
+
+        <topic id="finish" listen="false">
+            <action index="1">
+                <speech>お疲れ様</speech>
+                <behavior id="assign" type="normal" />
+            </action>
+
+            <action index="2">
+                <speech>次も遊んでね</speech>
+                <behavior id="assign" type="normal" />
+                <control function="end_app" target="jp.co.tis.stc.photoquiz" />
+            </action>
         </topic>
     </body>
 </hvml>
