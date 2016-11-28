@@ -131,7 +131,7 @@ public class RegisterScenarioService extends Service {
             Log.d(TAG, "registerScenario file=" + file.getAbsolutePath());
             int result = VoiceUIManager.VOICEUI_ERROR;
             try {
-                if (home == true) {
+                if (home) {
                     //home用.
                     result = mVUIManager.registerHomeScenario(file.getAbsolutePath());
                 } else {
@@ -150,7 +150,7 @@ public class RegisterScenarioService extends Service {
      * 基準フォルダー名取得.
      */
     private String getBaseFolderName(Boolean home) {
-        if (home == true) {
+        if (home) {
             //home用.
             return SCENARIO_FOLDER_HOME;
         } else {
