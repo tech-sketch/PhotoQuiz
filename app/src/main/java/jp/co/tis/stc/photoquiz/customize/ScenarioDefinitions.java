@@ -74,6 +74,10 @@ public class ScenarioDefinitions {
     //画像検索を開始させる関数を実行
     public static final String FUNC_START_SEARCH_IMAGE = "start_search_image";
 
+//    Q&Aのシナリオを開始
+    public static final String ACC_QA_FLOW = ScenarioDefinitions.PACKAGE + ".qa_flow.init";
+    public static final String FUNC_START_QA_FLOW = "start_qa_flow";
+
     /**
      * static クラスとして使用する.
      */
