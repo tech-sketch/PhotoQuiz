@@ -53,7 +53,7 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
     /**
      * 排他制御用.
      */
-    private Object mLock = new Object();
+    final private Object mLock = new Object();
     /**
      * プロジェクタ照射状態.
      */
