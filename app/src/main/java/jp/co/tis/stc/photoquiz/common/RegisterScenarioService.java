@@ -212,7 +212,7 @@ public class RegisterScenarioService extends Service {
             if (fileOutputStream != null) {
                 try {
                     fileOutputStream.close();
-                } catch (Exception e) {
+                } catch (Exception ignored) {
                 }
             }
             fileOutputStream = null;
@@ -220,7 +220,7 @@ public class RegisterScenarioService extends Service {
             if (inputStream != null) {
                 try {
                     inputStream.close();
-                } catch (Exception e) {
+                } catch (Exception ignored) {
                 }
             }
             inputStream = null;
