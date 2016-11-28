@@ -69,7 +69,6 @@
 
         <topic id="incorrect" listen="false">
             <action index="1">
-                <!--<speech>${memory_p:jp.co.tis.stc.photoquiz.incorrect}は間違いだよ</speech>-->
                 <speech>${Lvcsr:Kana}は間違いだよ</speech>
                 <behavior id="assign" type="normal" />
             </action>

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">PhotoQuiz</string>
-    <string name="hello">Hello RoBoHoN!!</string>
 
     <string-array name="words">
         <item>サクラ</item>

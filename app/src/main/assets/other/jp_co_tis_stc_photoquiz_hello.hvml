@@ -20,7 +20,6 @@
                 <control function="start_projector" target="jp.co.tis.stc.photoquiz">
                 </control>
             </action>
-            <!--<a href="jp_co_tis_stc_photoquiz_qa_flow.hvml#init" type="default" />-->
             <action index="2">
                 <control function="start_qa_flow" target="jp.co.tis.stc.photoquiz">
                 </control>

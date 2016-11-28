@@ -8,16 +8,11 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import jp.co.sharp.android.voiceui.VoiceUIManager;
 
 /**
  * Created By @seiketkm
@@ -26,7 +21,6 @@ import jp.co.sharp.android.voiceui.VoiceUIManager;
 public class ImageSearchTask extends AsyncTask<String, Integer, Bitmap> {
     private final static String TAG = ImageSearchTask.class.getSimpleName();
     private final Activity activity;
-    private VoiceUIManager mVoiceUIManager = null;
     ProgressDialog dialog;
 
     public ImageSearchTask(Activity activity){
@@ -53,28 +47,6 @@ public class ImageSearchTask extends AsyncTask<String, Integer, Bitmap> {
         return getBitmapFromUrl(imgUrl);
     }
 
-    // GCE parse
-    // Google Custome Engineの応答を解析し一つの画像URLを取得する
-
-    /**
-     *
-     * @param json GoogleCustomeEngine の応答
-     * @return itemsの一つ目のString
-     */
-    private String parseFirstImageUrl(JSONObject json){
-        try{
-            JSONArray items = json.getJSONArray("items");
-            if(items.length() == 0)
-                return "";
-            JSONObject item = items.getJSONObject(0);
-            String link = item.getString("link");
-            return link;
-        }catch(JSONException e){
-            Log.d(TAG, e.getMessage());
-            return "";
-        }
-    }
-
     private Bitmap getBitmapFromUrl(String imgUrl){
         try {
             URL url = new URL(imgUrl);
@@ -93,7 +65,6 @@ public class ImageSearchTask extends AsyncTask<String, Integer, Bitmap> {
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
-        // nothing to do
     }
 
     @Override
