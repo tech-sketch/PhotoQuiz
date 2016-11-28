@@ -38,14 +38,17 @@
 
         <topic id="start_qa" listen="true">
             <a href="#correct">
-                <situation trigger="user-word">${Lvcsr:Kana} near
+                <situation trigger="user-word" priority="81">${Lvcsr:Kana} near
                     ${memory_p:jp.co.tis.stc.photoquiz.correct}
                 </situation>
             </a>
             <a href="#incorrect">
-                <situation trigger="user-word">${Lvcsr:Kana} neq
+                <situation trigger="user-word" priority="80">${Lvcsr:Kana} neq
                     ${memory_p:jp.co.tis.stc.photoquiz.correct}
                 </situation>
+            </a>
+            <a href="#inaudible">
+                <situation trigger="user-word" priority="75">ＶＯＩＣＥＰＦ＿ＥＲＲ  in ${Lvcsr:Basic}</situation>
             </a>
             <next href="#timeover" type="default" />
         </topic>
@@ -88,6 +91,19 @@
             </action>
             <next href="#continue" type="default" />
         </topic>
+
+        <topic id="inaudible" listen="false">
+            <action index="1">
+                <speech>うまく聞き取れなかったよ。ごめんね。</speech>
+                <behavior id="assign" type="normal" />
+            </action>
+            <action index="2">
+                <speech>もう一度答えてね</speech>
+                <behavior id="assign" type="normal" />
+            </action>
+            <next href="#start_qa" type="default" />
+        </topic>
+
 
         <topic id="continue" listen="false">
             <rule>
