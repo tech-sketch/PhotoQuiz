@@ -23,5 +23,5 @@ dependencies {
     provided files('jar/jp.co.sharp.android.voiceui.framework.jar')
     provided files('jar/jp.co.sharp.android.rb.projector.framework.jar')
     provided files('jar/jp.co.sharp.android.rb.addressbook.framework.jar')
-    testCompile "junit:junit:4.+"
+    testCompile "junit:junit:4.0"
 }
