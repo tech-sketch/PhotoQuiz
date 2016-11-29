@@ -17,6 +17,14 @@
                 <memory key="count" type="temporary" value="1" />
                 <memory key="correct" type="temporary" value="0" />
             </action>
+            <action index="2">
+                <speech>それじゃー、フォトクイズを始めるよ</speech>
+                <behavior id="assign" type="normal" />
+            </action>
+            <action index="2">
+                <speech>10秒以内に答えてね</speech>
+                <behavior id="assign" type="normal" />
+            </action>
             <next href="#start" type="default" />
         </topic>
 
@@ -29,9 +37,6 @@
             </action>
             <action index="3">
                 <speech>これは何かわかる？</speech>
-            </action>
-            <action index="4">
-                <speech>10秒以内に答えてね</speech>
             </action>
             <next href="#start_qa" type="default" />
         </topic>
@@ -61,7 +66,7 @@
                 <behavior id="assign" type="normal" />
             </action>
             <action index="2">
-                <speech>すごいね！</speech>
+                <speech>すごい、すごーい！</speech>
                 <behavior id="assign" type="normal" />
             </action>
             <next href="#continue" type="default" />
@@ -139,7 +144,7 @@
             </rule>
             <case id="1">
                 <action index="1">
-                    <speech>もっと勉強して頑張ろうね</speech>
+                    <speech>次は頑張ろうね</speech>
                     <behavior id="assign" type="normal" />
                 </action>
                 <next href="#finish" type="default" />
@@ -149,16 +154,12 @@
                     <speech>あともう少しだったね</speech>
                     <behavior id="assign" type="normal" />
                 </action>
-                <action index="2">
-                    <speech>次は頑張ろうね</speech>
-                    <behavior id="assign" type="normal" />
-                </action>
                 <next href="#finish" type="default" />
             </case>
 
             <case id="3">
                 <action index="1">
-                    <speech>全問正解だよ</speech>
+                    <speech>すごーい！全問正解だよ</speech>
                     <behavior id="assign" type="normal" />
                 </action>
                 <next href="#finish" type="default" />
