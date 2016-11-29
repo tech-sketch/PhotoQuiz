@@ -314,9 +314,9 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
             switch (intent.getAction()) {
                 case ProjectorManagerServiceUtil.ACTION_PROJECTOR_PREPARE:
                 case ProjectorManagerServiceUtil.ACTION_PROJECTOR_PAUSE:
-                case ProjectorManagerServiceUtil.ACTION_PROJECTOR_RESUME:
                     break;
-                case ProjectorManagerServiceUtil.ACTION_PROJECTOR_START:
+                case ProjectorManagerServiceUtil.ACTION_PROJECTOR_RESUME: // Projecterの投影位置変更時
+                case ProjectorManagerServiceUtil.ACTION_PROJECTOR_START:  // Projecterの投影開始時
                     acquireWakeLock();
                     isProjected = true;
                     VoiceUIVariableListHelper helper = new VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_QA_FLOW);
