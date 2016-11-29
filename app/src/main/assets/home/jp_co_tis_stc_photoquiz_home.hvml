@@ -25,7 +25,7 @@
                 <behavior id="${resolver:motion_ok(${resolver:ok_id})}" type="normal" />
             </action>
             <action index="2">
-                <speech>はーい、クイズだね。じゃあいくよ。</speech>
+                <speech>フォトクイズだね。じゃあいくよ。</speech>
                 <behavior id="assign" type="normal" />
                 <control function="start_activity" target="home">
                     <data key="package_name" value="jp.co.tis.stc.photoquiz" />
