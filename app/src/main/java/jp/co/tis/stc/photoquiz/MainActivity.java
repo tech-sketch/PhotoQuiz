@@ -317,10 +317,15 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
                     break;
                 case ProjectorManagerServiceUtil.ACTION_PROJECTOR_RESUME: // Projecterの投影位置変更時
                 case ProjectorManagerServiceUtil.ACTION_PROJECTOR_START:  // Projecterの投影開始時
-                    acquireWakeLock();
-                    isProjected = true;
-                    VoiceUIVariableListHelper helper = new VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_QA_FLOW);
-                    VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
+                    mHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            acquireWakeLock();
+                            isProjected = true;
+                            VoiceUIVariableListHelper helper = new VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_QA_FLOW);
+                            VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
+                        }
+                    },5000);//プロジェクタ稼働後5000ミリ秒たってからシナリオを動作させる。
                     break;
                 case ProjectorManagerServiceUtil.ACTION_PROJECTOR_END:
                 case ProjectorManagerServiceUtil.ACTION_PROJECTOR_END_FATAL_ERROR:
