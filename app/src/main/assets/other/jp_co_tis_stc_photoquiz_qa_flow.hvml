@@ -5,9 +5,6 @@
         <description>クイズの出題と回答の一連の流れ</description>
         <scene value="jp.co.tis.stc.photoquiz.scene01" />
         <version value="1.0" />
-        <situation priority="75" topic_id="init" trigger="user-word">テスト near
-            ${Lvcsr:Basic}
-        </situation>
         <accost priority="75" topic_id="init" word="jp.co.tis.stc.photoquiz.qa_flow.init" />
     </head>
 
