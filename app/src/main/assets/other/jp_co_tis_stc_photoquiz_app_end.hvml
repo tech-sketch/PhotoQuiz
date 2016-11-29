@@ -4,9 +4,9 @@
         <producer>jp.co.tis.stc.photoquiz</producer>
         <description>アプリを終了するためのシナリオ</description>
         <scene value="jp.co.tis.stc.photoquiz.scene_common" />
-        <version value="1.0" />
-        <situation priority="61" topic_id="accept" trigger="user-word">アプリ in ${Lvcsr:Basic} and
-            ${Lvcsr:Basic} include [終了,終わ]
+        <version value="1.1" />
+        <situation priority="61" topic_id="accept" trigger="user-word">クイズ in ${Lvcsr:Basic} and
+            ${Lvcsr:Basic} include [終了,終わ,おしまい]
         </situation>
         <accost priority="74" topic_id="execute" word="jp.co.tis.stc.photoquiz.app_end.execute" />
     </head>
