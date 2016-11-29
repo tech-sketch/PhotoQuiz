@@ -20,10 +20,6 @@
                 <control function="start_projector" target="jp.co.tis.stc.photoquiz">
                 </control>
             </action>
-            <action index="2">
-                <control function="start_qa_flow" target="jp.co.tis.stc.photoquiz">
-                </control>
-            </action>
         </topic>
     </body>
 </hvml>
