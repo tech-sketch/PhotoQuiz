@@ -55,9 +55,9 @@ public class ScenarioDefinitions {
      */
     public static final String SCENE01 = PACKAGE + ".scene01";
     /**
-     * accost名：こんにちは発話実行.
+     * accost名：フォトクイズ開始後にプロジェクタ開始.
      */
-    public static final String ACC_HELLO = ScenarioDefinitions.PACKAGE + ".hello.say";
+    public static final String ACC_PROJECTOR = ScenarioDefinitions.PACKAGE + ".projector.start";
     /**
      * accost名：アプリ終了発話実行.
      */

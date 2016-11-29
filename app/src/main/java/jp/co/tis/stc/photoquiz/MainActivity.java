@@ -109,7 +109,7 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
         VoiceUIManagerUtil.enableScene(mVoiceUIManager, ScenarioDefinitions.SCENE01);
 
         if (mVoiceUIManager != null) {
-            VoiceUIVariableListHelper helper = new VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_HELLO);
+            VoiceUIVariableListHelper helper = new VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_PROJECTOR);
             VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
         }
 

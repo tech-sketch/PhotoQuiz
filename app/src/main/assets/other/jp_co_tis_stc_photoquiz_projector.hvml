@@ -4,11 +4,11 @@
         <producer>jp.co.tis.stc.photoquiz</producer>
         <description>プロジェクタの起動シナリオ</description>
         <scene value="jp.co.tis.stc.photoquiz.scene01" />
-        <version value="1.1" />
-        <accost priority="75" topic_id="say" word="jp.co.tis.stc.photoquiz.hello.say" />
+        <version value="1.2" />
+        <accost priority="75" topic_id="start" word="jp.co.tis.stc.photoquiz.projector.start" />
     </head>
     <body>
-        <topic id="say">
+        <topic id="start">
             <action index="1">
                 <speech>プロジェクターを起動するね。</speech>
                 <behavior id="assign" type="normal" />
