@@ -11,12 +11,6 @@
         <situation priority="78" topic_id="start" trigger="user-word">
             ${Local:WORD_APPLICATION_FREEWORD} eq ふぉとくいずあぷりしよう
         </situation>
-        <situation priority="78" topic_id="start" trigger="user-word">
-            ${Local:WORD_APPLICATION_FREEWORD} eq ふぉとくいずしよう
-        </situation>
-        <situation priority="78" topic_id="start" trigger="user-word">
-            ${Local:WORD_APPLICATION_FREEWORD} eq くいずしよう
-        </situation>
     </head>
     <body>
         <topic id="start" listen="false">
